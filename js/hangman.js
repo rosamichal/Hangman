@@ -26,6 +26,7 @@ const generateAlphabet = () => {
     for (const letter of $alphabetLetters) {
         const letterButton = document.createElement('button');
         letterButton.innerText = letter;
+        letterButton.classList.add('alphabet__letter');
         
         $alphabet.appendChild(letterButton)
     }

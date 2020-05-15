@@ -5,6 +5,8 @@
 :root {
     --background-color: rgb(0,0,0);
     --password-color: rgb(255,255,255);
+    --letter-basic-color: rgba(255,255,255,0.6);
+    --letter-basic-hover-color: rgb(255, 255, 255);
 }
 
 body {
@@ -15,7 +17,21 @@ body {
 }
 
 .alphabet {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
 
+.alphabet__letter {
+    margin: 5px;
+    background-color: var(--background-color);
+    color: var(--letter-basic-color);
+    border: solid 3px var(--letter-basic-color);
+    border-radius: 15px;
+}
+
+.alphabet__letter:hover {
+    color: var(--letter-basic-hover-color);
+    border-color: var(--letter-basic-hover-color);
 }
 
 .board {
@@ -25,9 +41,12 @@ body {
 .main {
     width: 900px;
     margin-top: 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .password {
     text-align: center;
     color: var(--password-color);
+    grid-column: 1 / 3;
 }
