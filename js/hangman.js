@@ -5,19 +5,30 @@ let $alphabet;
 let $wrongLetterCount;
 let $visiblePassword;
 let $hiddenPassword;
+const $alphabetLetters = 'AĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSŚTUVWXYZŹŻ'.split('');
 
 
 const main = () => {
     prepareDOMElements();
+    
+    generateAlphabet();
 
     newGame();
-
 }
 
 const prepareDOMElements = () => {
     $passwordText = document.querySelector('.password__text--js');
     $boardImg = document.querySelector('.board__img--js');
     $alphabet = document.querySelector('.alphabet--js');
+}
+
+const generateAlphabet = () => {
+    for (const letter of $alphabetLetters) {
+        const letterButton = document.createElement('button');
+        letterButton.innerText = letter;
+        
+        $alphabet.appendChild(letterButton)
+    }
 }
 
 const newGame = () => {
