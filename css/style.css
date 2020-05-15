@@ -18,6 +18,7 @@ body {
     font-family: 'Overpass Mono', monospace;
     display: flex;
     justify-content: center;
+    color: var(--password-color);
 }
 
 .alphabet {
@@ -57,6 +58,14 @@ body {
 
 .board {
 
+}
+
+.hide {
+    display: none;
+}
+
+.info {
+    text-align: center;
 }
 
 .main {

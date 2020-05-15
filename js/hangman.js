@@ -1,18 +1,21 @@
 let $passwordText;
 let $boardImg;
 let $alphabet;
+let $info;
+let $infoWin;
+let $infoLose;
+let $newGame;
 
 let $wrongLetterCount;
 let $visiblePassword;
 let $hiddenPassword;
 const $alphabetLetters = 'AĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSŚTUVWXYZŹŻ'.split('');
+const $maxWrongLetters = 9;
 
 
 const main = () => {
     prepareDOMElements();
     
-    generateAlphabet();
-
     newGame();
 }
 
@@ -20,9 +23,15 @@ const prepareDOMElements = () => {
     $passwordText = document.querySelector('.password__text--js');
     $boardImg = document.querySelector('.board__img--js');
     $alphabet = document.querySelector('.alphabet--js');
+    $info = document.querySelector('.info--js');
+    $infoWin = document.querySelector('.info__win--js');
+    $infoLose = document.querySelector('.info__lose--js');
+    $newGame = document.querySelector('.new-game--js');
+    $newGame.addEventListener('click', newGame);
 }
 
 const generateAlphabet = () => {
+    $alphabet.innerHTML = '';
     for (const letter of $alphabetLetters) {
         const letterButton = document.createElement('button');
         letterButton.innerText = letter;
@@ -42,8 +51,22 @@ const checkLetter = button => {
     else {
         $wrongLetterCount++;
         button.classList.add('alphabet__letter--incorrect');
+        $boardImg.setAttribute('src', `/images/s${$wrongLetterCount}.jpg`);
     }
     
+    if ($hiddenPassword === $visiblePassword) {
+        debugger;
+        $alphabet.classList.add('hide');
+        $info.classList.remove('hide');
+        $infoLose.classList.add('hide');
+    }
+
+    if ($wrongLetterCount === $maxWrongLetters) {
+        debugger;
+        $alphabet.classList.add('hide');
+        $info.classList.remove('hide');
+        $infoWin.classList.add('hide');
+    }
 }
 
 const showLetter = letter => {
@@ -58,6 +81,7 @@ const showLetter = letter => {
 }
 
 const newGame = () => {
+    generateAlphabet();
     reset();
     getNewPassword();
     dashedPassword($hiddenPassword);
@@ -67,6 +91,11 @@ const newGame = () => {
 const reset = () => {
     $wrongLetterCount = 0;
     $visiblePassword = '';
+    $alphabet.classList.remove('hide');
+    $info.classList.add('hide');
+    $infoWin.classList.remove('hide');
+    $infoLose.classList.remove('hide');
+    $boardImg.setAttribute('src', '/images/s0.jpg');
 }
 
 const getNewPassword = () => {
