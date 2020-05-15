@@ -27,9 +27,34 @@ const generateAlphabet = () => {
         const letterButton = document.createElement('button');
         letterButton.innerText = letter;
         letterButton.classList.add('alphabet__letter');
-        
+        letterButton.setAttribute('onclick', 'checkLetter(this)')
+
         $alphabet.appendChild(letterButton)
     }
+}
+
+const checkLetter = button => {
+    const letter = button.innerText;
+    if ($hiddenPassword.includes(letter)){
+        showLetter(letter);
+        button.classList.add('alphabet__letter--correct');
+    }
+    else {
+        $wrongLetterCount++;
+        button.classList.add('alphabet__letter--incorrect');
+    }
+    
+}
+
+const showLetter = letter => {
+    for (i=0; i<$hiddenPassword.length; i++)
+    {
+        if ($hiddenPassword.charAt(i) === letter) {
+            $visiblePassword = $visiblePassword.substr(0, i) + letter + $visiblePassword.substr(i+1)
+        }
+    }
+
+    writePassword();
 }
 
 const newGame = () => {
