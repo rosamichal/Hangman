@@ -22,6 +22,7 @@ const prepareDOMElements = () => {
 
 const newGame = () => {
     reset();
+    getNewPassword();
     dashedPassword($hiddenPassword);
     writePassword();
 }
@@ -29,7 +30,9 @@ const newGame = () => {
 const reset = () => {
     $wrongLetterCount = 0;
     $visiblePassword = '';
-    
+}
+
+const getNewPassword = () => {
     //todo: losowanie hasła
     $hiddenPassword = 'Bez pracy nie ma kołaczy';
     $hiddenPassword = $hiddenPassword.toUpperCase();
