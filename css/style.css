@@ -7,6 +7,10 @@
     --password-color: rgb(255,255,255);
     --letter-basic-color: rgba(255,255,255,0.6);
     --letter-basic-hover-color: rgb(255, 255, 255);
+    --letter-correct-color: rgb(0,190,0);
+    --letter-correct-background-color: rgb(0,50,0);
+    --letter-incorrect-color: rgb(190,0,0);
+    --letter-incorrect-background-color: rgb(50,0,0);
 }
 
 body {
@@ -27,11 +31,28 @@ body {
     color: var(--letter-basic-color);
     border: solid 3px var(--letter-basic-color);
     border-radius: 15px;
+    cursor: pointer;
 }
 
 .alphabet__letter:hover {
     color: var(--letter-basic-hover-color);
     border-color: var(--letter-basic-hover-color);
+}
+
+.alphabet__letter--correct,
+.alphabet__letter--correct:hover {
+    color: var(--letter-correct-color);
+    border-color: var(--letter-correct-color);
+    background-color: var(--letter-correct-background-color);
+    cursor: default;
+}
+
+.alphabet__letter--incorrect,
+.alphabet__letter--incorrect:hover {
+    color: var(--letter-incorrect-color);
+    border-color: var(--letter-incorrect-color);
+    background-color: var(--letter-incorrect-background-color);
+    cursor: default;
 }
 
 .board {
