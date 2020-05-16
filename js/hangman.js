@@ -32,7 +32,6 @@ const $maxWrongLetters = 9;
 
 const main = () => {
     prepareDOMElements();
-    
     newGame();
 }
 
@@ -47,6 +46,14 @@ const prepareDOMElements = () => {
     $newGame.addEventListener('click', newGame);
 }
 
+const newGame = () => {
+    generateAlphabet();
+    reset();
+    getNewPassword();
+    dashedPassword();
+    writePassword();
+}
+
 const generateAlphabet = () => {
     $alphabet.innerHTML = '';
     for (const letter of $alphabetLetters) {
@@ -57,6 +64,33 @@ const generateAlphabet = () => {
 
         $alphabet.appendChild(letterButton)
     }
+}
+
+const reset = () => {
+    $wrongLetterCount = 0;
+    $visiblePassword = '';
+    $alphabet.classList.remove('hide');
+    $info.classList.add('hide');
+    $infoWin.classList.remove('hide');
+    $infoLose.classList.remove('hide');
+    $boardImg.setAttribute('src', '/images/s0.jpg');
+}
+
+const getNewPassword = () => {
+    $hiddenPassword = $data[Math.floor(Math.random() * $data.length)];
+    $hiddenPassword = $hiddenPassword.toUpperCase();
+}
+
+const dashedPassword = () => {
+    for (i=0; i<$hiddenPassword.length; i++)
+    {
+        if ($alphabetLetters.includes($hiddenPassword.charAt(i))) $visiblePassword = $visiblePassword + '-';
+        else $visiblePassword = $visiblePassword + $hiddenPassword.charAt(i);
+    }
+}
+
+const writePassword = () => {
+    $passwordText.innerHTML = $visiblePassword;
 }
 
 const checkLetter = button => {
@@ -94,43 +128,5 @@ const showLetter = letter => {
 
     writePassword();
 }
-
-const newGame = () => {
-    generateAlphabet();
-    reset();
-    getNewPassword();
-    dashedPassword($hiddenPassword);
-    writePassword();
-}
-
-const reset = () => {
-    $wrongLetterCount = 0;
-    $visiblePassword = '';
-    $alphabet.classList.remove('hide');
-    $info.classList.add('hide');
-    $infoWin.classList.remove('hide');
-    $infoLose.classList.remove('hide');
-    $boardImg.setAttribute('src', '/images/s0.jpg');
-}
-
-const getNewPassword = () => {
-    //todo: losowanie hasła
-    $hiddenPassword = $data[Math.floor(Math.random() * $data.length)];
-    $hiddenPassword = $hiddenPassword.toUpperCase();
-}
-
-const dashedPassword = $hiddenPassword => {
-    for (i=0; i<$hiddenPassword.length; i++)
-    {
-        if ($alphabetLetters.includes($hiddenPassword.charAt(i))) $visiblePassword = $visiblePassword + '-';
-        else $visiblePassword = $visiblePassword + $hiddenPassword.charAt(i);
-    }
-}
-
-const writePassword = () => {
-    $passwordText.innerHTML = $visiblePassword;
-}
-
-
 
 document.addEventListener('DOMContentLoaded', main);
