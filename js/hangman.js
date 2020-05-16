@@ -102,7 +102,7 @@ const checkLetter = button => {
         $wrongLetterCount++;
         button.classList.add('alphabet__letter--incorrect');
         button.removeAttribute('onclick');
-        $boardImg.setAttribute('src', `/images/s${$wrongLetterCount}.jpg`);
+        $boardImg.setAttribute('src', `./images/s${$wrongLetterCount}.jpg`);
     }
 
     if ($hiddenPassword === $visiblePassword) {
