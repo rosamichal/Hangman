@@ -102,6 +102,7 @@ const checkLetter = button => {
     else {
         $wrongLetterCount++;
         button.classList.add('alphabet__letter--incorrect');
+        button.removeAttribute('onclick');
         $boardImg.setAttribute('src', `/images/s${$wrongLetterCount}.jpg`);
     }
     
