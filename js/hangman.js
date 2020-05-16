@@ -74,7 +74,7 @@ const reset = () => {
     $info.classList.add('hide');
     $infoWin.classList.remove('hide');
     $infoLose.classList.remove('hide');
-    $boardImg.setAttribute('src', '/images/s0.jpg');
+    $boardImg.setAttribute('src', './images/s0.jpg');
 }
 
 const getNewPassword = () => {
