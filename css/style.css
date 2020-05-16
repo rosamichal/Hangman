@@ -1,16 +1,18 @@
-*, *::before, *::after{
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
 :root {
-    --background-color: rgb(0,0,0);
-    --password-color: rgb(255,255,255);
-    --letter-basic-color: rgba(255,255,255,0.6);
+    --background-color: rgb(0, 0, 0);
+    --password-color: rgb(255, 255, 255);
+    --letter-basic-color: rgba(255, 255, 255, 0.6);
     --letter-basic-hover-color: rgb(255, 255, 255);
-    --letter-correct-color: rgb(0,190,0);
-    --letter-correct-background-color: rgb(0,50,0);
-    --letter-incorrect-color: rgb(190,0,0);
-    --letter-incorrect-background-color: rgb(50,0,0);
+    --letter-correct-color: rgb(0, 190, 0);
+    --letter-correct-background-color: rgb(0, 50, 0);
+    --letter-incorrect-color: rgb(190, 0, 0);
+    --letter-incorrect-background-color: rgb(50, 0, 0);
 }
 
 body {

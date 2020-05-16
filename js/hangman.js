@@ -1,17 +1,18 @@
 const $data = ["Bez pracy nie ma kołaczy",
-"Fortuna kołem się toczy",
-"Nie chwal dnia przed zachodem słońca",
-"Lepszy wróbel w garści niż gołąb na dachu",
-"Apetyt rośnie w miarę jedzenia",
-"Nie od razu Kraków zbudowano",
-"Nie taki diabeł straszny, jak go malują",
-"Głupim szczęście sprzyja",
-"Co nagle, to po diable",
-"Polak, Węgier dwa bratanki, i do szabli i do szklanki",
-"Polak, gdy głodny, to zły",
-"Gdzie diabeł nie może, tam babę pośle",
-"Wszystkie drogi prowadzą do Rzymu",
-"Jak Kuba Bogu, tak Bóg Kubie"];
+    "Fortuna kołem się toczy",
+    "Nie chwal dnia przed zachodem słońca",
+    "Lepszy wróbel w garści niż gołąb na dachu",
+    "Apetyt rośnie w miarę jedzenia",
+    "Nie od razu Kraków zbudowano",
+    "Nie taki diabeł straszny, jak go malują",
+    "Głupim szczęście sprzyja",
+    "Co nagle, to po diable",
+    "Polak, Węgier dwa bratanki, i do szabli i do szklanki",
+    "Polak, gdy głodny, to zły",
+    "Gdzie diabeł nie może, tam babę pośle",
+    "Wszystkie drogi prowadzą do Rzymu",
+    "Jak Kuba Bogu, tak Bóg Kubie"
+];
 
 
 
@@ -82,8 +83,7 @@ const getNewPassword = () => {
 }
 
 const dashedPassword = () => {
-    for (i=0; i<$hiddenPassword.length; i++)
-    {
+    for (i = 0; i < $hiddenPassword.length; i++) {
         if ($alphabetLetters.includes($hiddenPassword.charAt(i))) $visiblePassword = $visiblePassword + '-';
         else $visiblePassword = $visiblePassword + $hiddenPassword.charAt(i);
     }
@@ -95,17 +95,16 @@ const writePassword = () => {
 
 const checkLetter = button => {
     const letter = button.innerText;
-    if ($hiddenPassword.includes(letter)){
+    if ($hiddenPassword.includes(letter)) {
         showLetter(letter);
         button.classList.add('alphabet__letter--correct');
-    }
-    else {
+    } else {
         $wrongLetterCount++;
         button.classList.add('alphabet__letter--incorrect');
         button.removeAttribute('onclick');
         $boardImg.setAttribute('src', `/images/s${$wrongLetterCount}.jpg`);
     }
-    
+
     if ($hiddenPassword === $visiblePassword) {
         $alphabet.classList.add('hide');
         $info.classList.remove('hide');
@@ -120,10 +119,9 @@ const checkLetter = button => {
 }
 
 const showLetter = letter => {
-    for (i=0; i<$hiddenPassword.length; i++)
-    {
+    for (i = 0; i < $hiddenPassword.length; i++) {
         if ($hiddenPassword.charAt(i) === letter) {
-            $visiblePassword = $visiblePassword.substr(0, i) + letter + $visiblePassword.substr(i+1)
+            $visiblePassword = $visiblePassword.substr(0, i) + letter + $visiblePassword.substr(i + 1)
         }
     }
 
