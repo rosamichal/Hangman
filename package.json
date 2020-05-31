@@ -1,0 +1,22 @@
+{
+  "name": "hangman",
+  "version": "1.0.0",
+  "description": "The Hangman game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rosamichal/Hangman.git"
+  },
+  "keywords": [
+    "hangman"
+  ],
+  "author": "Michał Rosa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rosamichal/Hangman/issues"
+  },
+  "homepage": "https://github.com/rosamichal/Hangman#readme"
+}
